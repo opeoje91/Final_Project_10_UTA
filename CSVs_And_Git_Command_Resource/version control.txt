@@ -1,0 +1,13 @@
+1.Git clone main 
+
+2.Create a branch
+	C:\BootCampFiles\Final_Project_10_UTA>git branch OPE
+
+3. Check out branch 
+	C:\BootCampFiles\Final_Project_10_UTA>git checkout OPE
+
+4. Confirm branch is created and switched
+	C:\BootCampFiles\Final_Project_10_UTA>git status
+
+5. Push to remote
+	C:\BootCampFiles\Final_Project_10_UTA>git push -u origin head
