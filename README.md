@@ -265,7 +265,83 @@ Tableau Dashboards
 
 ## Analysis and Workflow
 
-### Machine Learning Model
+## Machine Learning Model
+In this segment of Machine learning, we discuss the following topics:
+
+- Preliminary data pre-processing
+- Preliminary feature engineering and preliminary feature selection, such as how the official model was decided
+- How the data is split into training and testing sets
+- Model choice, its' limitations, and its' benefits
+
+
+### Preliminary data preprocessing
+The data pre-processing was approached through answering what exactly it was we were trying to answer of ourselves and others as it relates to stock. In our base dataset, the following columns were included and are our feature columns:
+- Date
+- Open
+- High
+- Low
+- Close
+- Adj Close
+- Volume
+
+After observing the dataset and creating our question for which we seek results, we then decided on the additional features would be needed:
+- Season
+- Quarter
+- 24hr price change column for each price variable and for volume
+- A Gain/Loss column based on the negative or positive status of each price variable's 24hr change column
+
+The new columns based on date, seasons, and fiscal quarters were needed to answer our most sought out questions. To create it, many formulas were utilized, therefore we separated it into a 2nd database with intention to join the two databases together as one via "Date".
+
+
+### Preliminary Feature Engineering and Feature Selection
+The previous slide discusses our features, and our target column of our machine learning code is based on the 24hr changes of our price variable feature columns. Our machine learning model is of four models overall, but it is based on one single database. The target columns are our “Gain_Loss_<Price_Variable>” column. This column is based off of the numbers in “<Price_Variable>_24hr_Change” column and is demonstated in the database as the following:
+- “< 0 = ‘Loss’”
+- “>= 0 = ‘Gain’”
+
+The “<Price_Variable>_24hr_Change” or “<Price_Variable>_Change” column is based on the (current price - previous day’s price) for everyday of Apple’s stock in chronological order by “Date”. The Gain/Loss column identifies the respective change column as a negative or positive number, in which it then labels that row as a "Gain" or a "Loss"
+
+Based on Machine Learning studies, the target is based on two options - either, or - only. Examples are: 0 or a 1 Yes or No Approve or Deny Gain or Loss The Gain/Loss of the stock price features by day is the best engineered feature to base the stock’s machine learning model, because that is what is important to the people who will use it to their own benefit
+
+
+### Machine Learning Testing and Training Split
+Two models were tested for Machine Learning, both Logistic Regression and Random Forest Model. In the Logistic Regression:
+  - The random state = 1
+  - Stratify = y
+  - and the sample consisted of 7669 rows and 17 columns of our full database set, or 7669 rows and 18 columns
+
+In the Random Forest Model, the model received a higher accuracy by 3-5% upon changing Random state from 78 to 1 in this model for all price variables, but received the best accuracy when left at 78 for the volume variable models as well as train with 80% of the data
+
+
+### Model Choice, Model Limitations & Benefits
+Two Machine Learning models were tested for this data. Both Logistic Regression and Random Forest Model were great choices because everything is measured through time and time runs linear. We officially settled on the Random Forest Model because, not only is it a regression that works well in time, but it is beneficial in weighing the importance of each feature. Model limitations include the fact that for time, date format was not enough for the model to read. We had to convert dates to “toordinal” time in order for the machine model to interpret dates as a form of time in a language that was it’s most favorable, and that turned out to be the “toordinal” language
+
+
+ *Accuracy: Logistic Regression*
+Price Variables:
+- Low = 56%
+- Close = 54%
+- High = 55%
+- Open = 54% Volume Variables:
+
+With Volume 24hr Change Column
+- 58%
+
+With All Price Variable 24hr Change Columns present, but no Volume Change column
+- 58%
+
+
+*Accuracy: Random Forest Model*
+Price Variables:
+- Low = 61%
+- Close = 63%
+- High = 60%
+- Open = 58% Volume Variables:
+
+With Volume 24hr Change Column
+- 66%
+
+With All Price Variable 24hr Change Columns present, but no Volume Change column
+- 72%
 
 ### Database
 
@@ -283,4 +359,4 @@ https://public.tableau.com/app/profile/opy.shoffy/viz/Final_Project_10_162777822
 ![](SEGMENT%202/Dashboard_screenshot_7_31.png)
 
 
-# Final_Project_10_UTA
+
