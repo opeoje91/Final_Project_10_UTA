@@ -359,4 +359,26 @@ https://public.tableau.com/app/profile/opy.shoffy/viz/Final_Project_10_162777822
 ![](SEGMENT%202/Dashboard_screenshot_7_31.png)
 
 
+Candlestick Analysis
+
+The apple share price was compared over a period of 5 years and it was obvious that there was a steady increase in price over a period of 5 years. 
+
+There’s usually a rise in volume at the beginning of every year until 2020 when there was a deep, the reason for this is not far fetched- the pandemic!
+
+![](SEGMENT 2/candlestick/2016-2020.png)
+
+The price and volume variations for each decade was also analyzed and it shows that in the year 1990, there was a deep in price and a rise in volume towards the end of the year (October), the same can be said about the year 2000, whereas in the year 2010, there was a rise in volume and a drop in price in January while in 2020, the lowest price and volume was experienced in April (right after the pandemic lockdown), however, the price started picking up in September but the volume did not pick up until December.
+
+
+![](SEGMENT 2/candlestick/1990.png)
+
+
+![](SEGMENT 2/candlestick/2000.png)
+
+
+![](SEGMENT 2/candlestick/2010.png)
+
+
+![](SEGMENT 2/candlestick/2020.png)
+
 
