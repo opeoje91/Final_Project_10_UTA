@@ -1,0 +1,76 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+official_table <- read.csv(file='AAPL_Pre_Official_DB_7_31.csv',check.names=F,stringsAsFactors = F)#Reading the official file
+month_summary<- subset(official_table) %>% group_by(Month) %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table for months by volume 
+
+month_plt <- ggplot(month_summary,aes(x=Month,y=Mean_volume)) #import dataset into ggplot2
+
+month_plt + geom_line() + labs(title = "Total Volume By months")
+
+
+```
+```{r}
+#official_table <- read.csv(file='AAPL_Pre_Official_DB_7_31.csv',check.names=F,stringsAsFactors = F)#Reading the official file
+year_summary_season <- subset(official_table) %>% group_by(Year, Season)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table
+#plt_year_summary_season <- ggplot(year_summary_season,aes(x=Year,y=Mean_volume)) #import dataset into ggplot2
+
+#plt_year_summary_season + geom_point() + xlab("Year") + ylab("Mean_volume") #add scatter plot with labels
+plt_year_summary_season <- ggplot(year_summary_season,aes(x=Year,y=Mean_volume,color=Season)) #import dataset into ggplot2
+
+plt_year_summary_season + geom_point() + labs(x="Year", y="Mean_volume", color="Season", title ="Summary of Volume per Season & Year" )#add scatter plot with labels
+
+```
+```{r}
+year_lastTenSeason <- subset(official_table, Year > 2015 & Year <= 2020) %>% group_by(Year, Season)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table
+plt_year_lastTenSeason <- ggplot(year_lastTenSeason,aes(x=Year,y=Mean_volume,color=Season)) #import dataset into ggplot2
+
+plt_year_lastTenSeason + geom_point() + labs(x="Year", y="Mean_volume", color="Season", title="Summary of Volume in Last 5 Years for Seasons")#add scatter plot with labels
+```
+
+```{r}
+year_summary_quarter <- subset(official_table) %>% group_by(Year, Quarter)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table
+
+plt_year_summary_quarter <- ggplot(year_summary_quarter,aes(x=Year,y=Mean_volume,color=Quarter)) #import dataset into ggplot2
+
+plt_year_summary_quarter + geom_point() + labs(x="Year", y="Mean_volume", color="Quarter", title ="Summary of Volume per Quarters & Year")#add scatter plot with labels
+
+
+```
+```{r}
+year_lastTenQuarter <- subset(official_table, Year > 2015 & Year <= 2020) %>% group_by(Year, Quarter)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table
+plt_year_lastTenQuarter <- ggplot(year_lastTenQuarter,aes(x=Year,y=Mean_volume,color=Quarter)) #import dataset into ggplot2
+
+plt_year_lastTenQuarter + geom_point() + labs(x="Year", y="Mean_volume", color="Quarters", title="Summary of Volume in Last 5 Years for Quarters")#add scatter plot with labels
+```
+
+
+```{r}
+month_summary_Gain_Loss_Open_season <- subset(official_table) %>% group_by(Gain_Loss_Open, Month , Season)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table for Gain_Loss_Open in each seasons for the months
+
+plt_month_summary_Gain_Loss_Open_season <- ggplot(month_summary_Gain_Loss_Open_season,aes(x=Month,y=Mean_volume,color=Season,shape = Gain_Loss_Open)) #import dataset into ggplot2
+
+plt_month_summary_Gain_Loss_Open_season + geom_point() + labs(x="Month", y="Mean_volume", color="Season", shape ="Gain_Loss_Open")#add scatter plot with labels
+
+
+month_summary_Gain_Loss_Open_quarter <- subset(official_table) %>% group_by(Gain_Loss_Open, Month , Quarter)  %>% summarize(Mean_volume=mean(Volume), .groups = 'keep') #create summary table for Gain_Loss_Open in each quarters for the months
+
+plt_month_summary_Gain_Loss_Open <- ggplot(month_summary_Gain_Loss_Open_quarter,aes(x=Month,y=Mean_volume,color=Quarter,shape = Gain_Loss_Open)) #import dataset into ggplot2
+
+
+plt_month_summary_Gain_Loss_Open + geom_point() + labs(x="Month", y="Mean_volume", color="Quarter", shape ="Gain_Loss_Open")#add scatter plot with labels
+
+
+
+
+```
+
+
+
