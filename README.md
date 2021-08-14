@@ -31,7 +31,7 @@ This topic was chosen to demonstrate that all things are connected, from all thi
 ### Data Source
 The data utilized is from Kaggle.com, titled the “NYSE”.
 
-- Link: https://www.kaggle.com/varpit94/apple-stock-data-updated-till-22jun2021
+- https://www.kaggle.com/varpit94/apple-stock-data-updated-till-22jun2021
 
 
 ### Questions We Hope to Answer
@@ -142,6 +142,7 @@ The photo below represents the four separate databases that we will run through 
 
 Throughout the remaining explanation of the machine model, we will be referring to the results of running our model with the AAPL_Mock_ML_Open.csv file. This same process will be applied with each of the database files separately. 
 
+
 *Features*
 
 In regard to the features, there are separate columns identifying the seasons and identifying the different quarters based on the stock pricing dates. The following photo is a snapshot of the fatures and target set being defined:
@@ -156,7 +157,7 @@ The first photo below shows the binary encoding, where we used get_dummies, and 
 ![](Images/Segment_1_Snaps/Binary_encoding_Seasons_Quarters.png)
 
 
-![](Images/Segment 3 Snaps/ML_Feature_Open_Snap.png)
+![](Images/Segment_3_Snaps/ML_Feature_Open_Snap.png)
 
 
 *Training*
@@ -194,12 +195,12 @@ Currently, we have two models with different accuracies. We will seek consultati
 
 This model was intended to function in a way that helps us predict future gains and losses based on historical prices, and then take the successful model and utilize it for an even closer look of Gains and Losses by Seasons and Fiscal Quarters. 
 
-*Two additional columns were added to the database for model functionality/support*
+- Two additional columns were added to the database for model functionality/support
 
 So far, we have gotten as far as creating models based on historical prices. The way that this works is that two formulated colums were added to our raw APPL dataset before joining the seasons and quarters database by date to the stock raw data by date. The first formulated column of the two was a "change variable" column. This column was formulated by taking one of the price variables (open, close, low, high) of the current day and subtracting it from the previous day's price. This would tell us how much the price has changed that day from the day before (the earliest day was subtracted from 0 as our starter). The second formulated column was a Gain_Loss column that was based on that change. This column was formulated to state "Loss" if the change was less than zero, and say "Gain" if the change was zero or greater. Because this file is a .csv file, the formula did not remain once the file was saved, the values became unformulated values instead. This situation does tie into why we have two separate sets of models rather than just one to choose from. This will be discussed a bit later.
 
 
-*Model Set 1: Logistic Regression - Average 65% Accuracy, 3 out of 4 models at 70% accuracy*
+- Model Set 1: Logistic Regression - Average 65% Accuracy, 3 out of 4 models at 70% accuracy
 
 In model set 1, which is based on logistic regression, the database that was entered into the model was processed differently than the Random Forest Model, not just by the rules of the model itself, but also by the columns involved. To optain majority 70% accuracy, a change column was produced, not only on the price variable, but also on the volumes of stock purchased on a daily basis. 
 
@@ -208,7 +209,7 @@ Within one of the failed models, the change column was initially created to dete
 ![](Images/ML_Snaps/Open_Volume_Change_Snap.png)
 
 
-*Model Set 2: Random Forest Model - Average 91% Accuracy, 4 out of 4 models at 91% accuracy* 
+- Model Set 2: Random Forest Model - Average 91% Accuracy, 4 out of 4 models at 91% accuracy
 
 In model set 2, which is based on the random forest model, the database that was entered into the model was processed differently than the Logistic Regression Model, not just by the rules of the model itself, but also by the columns involved. To optain majority 91% accuracy, The change column of the price variable that was used determine the Gain_Loss column was kept in the database rather than dropped with the Gain_Loss column as the features' set was defined. See photo below:
 
@@ -241,7 +242,8 @@ One of the main reasons this model was selected was because of its ability to ra
 
 From the snapshots, most of these look alike because many of the prices, are the same, or have very small differences. The dataset is from a sample of APPL's early years.
 
-*Conclusion to Mockup Overview*
+
+**Conclusion to Mockup Overview**
 
 In conclusion, we will continue testing models and seeking consultation based on our model experiences so far. By next class, we whould have found an additional dataset to help predict APPL stock fluctuations by bringing in more feature columns, if not create our own features through the dataset that we already have.
 
@@ -303,6 +305,7 @@ Based on Machine Learning studies, the target is based on two options - either, 
 
 ### Machine Learning Testing and Training Split
 **Methodologies**
+
 Two models were tested, the Logistic Regression and the Random Forest Model, and each of the two had a total of three different architectures applied 
 
 In both the Logistic Regression and the Random Forest Model:
