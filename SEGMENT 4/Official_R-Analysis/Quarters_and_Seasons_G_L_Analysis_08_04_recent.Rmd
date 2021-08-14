@@ -1,0 +1,142 @@
+---
+title: "Quarter_Season_G_L_Analysis_08)04"
+output: html_notebook
+---
+
+
+
+```{r}
+official_table <- read.csv(file='AAPL_Pre_Official_DB_7_31.csv',check.names=F,
+                           stringsAsFactors = F)
+
+#create summary table for quarter by volume 
+quarter_summary_<- subset(official_table) %>% group_by(Quarter) %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') 
+
+
+##create summary table for Gain_Loss_Open in each quarter 
+quarter_summary_Gain_Loss_Open <- subset(official_table) %>% 
+  group_by(Gain_Loss_Open, Quarter)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_quarter_summary_Gain_Loss_Open <- 
+  ggplot(quarter_summary_Gain_Loss_Open,
+         aes(x=Quarter,y=Mean_volume,color=Quarter,shape = Gain_Loss_Open)) 
+
+#add scatter plot with labels
+plt_quarter_summary_Gain_Loss_Open + geom_point() + 
+  labs(x="Quarter", y="Mean_volume", title ="Quarter_G/L_Open",
+       color="Quarter", shape ="Gain_Loss_Open")
+
+##create summary table for Gain_Loss_Closein each quarter 
+quarter_summary_Gain_Loss_Close <- subset(official_table) %>% 
+  group_by(Gain_Loss_Close, Quarter)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_quarter_summary_Gain_Loss_Close <- 
+  ggplot(quarter_summary_Gain_Loss_Close,
+         aes(x=Quarter,y=Mean_volume,color=Quarter,shape = Gain_Loss_Close)) 
+
+#add scatter plot with labels
+plt_quarter_summary_Gain_Loss_Close + geom_point() + 
+  labs(x="Quarter", y="Mean_volume", title ="Quarter_G/L_Close",
+       color="Quarter", shape ="Gain_Loss_Close")
+
+##create summary table for Gain_Loss_High in each quarter 
+quarter_summary_Gain_Loss_High <- subset(official_table) %>% 
+  group_by(Gain_Loss_High, Quarter)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_quarter_summary_Gain_Loss_High <- 
+  ggplot(quarter_summary_Gain_Loss_High,
+         aes(x=Quarter,y=Mean_volume,color=Quarter,shape = Gain_Loss_High)) 
+
+#add scatter plot with labels
+plt_quarter_summary_Gain_Loss_High + geom_point() + 
+  labs(x="Quarter", y="Mean_volume", title ="Quarter_G/L_High",
+       color="Quarter", shape ="Gain_Loss_High")
+
+##create summary table for Gain_Loss_Low in each quarter 
+quarter_summary_Gain_Loss_Low <- subset(official_table) %>% 
+  group_by(Gain_Loss_Low, Quarter)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_quarter_summary_Gain_Loss_Low <- 
+  ggplot(quarter_summary_Gain_Loss_Low,
+         aes(x=Quarter,y=Mean_volume,color=Quarter,shape = Gain_Loss_Low)) 
+
+#add scatter plot with labels
+plt_quarter_summary_Gain_Loss_Low + geom_point() + 
+  labs(x="Quarter", y="Mean_volume", title ="Quarter_G/L_Low",
+       color="Quarter", shape ="Gain_Loss_Low")
+
+#create summary table for season by volume 
+season_summary_<- subset(official_table) %>% group_by(Season) %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep')
+
+##create summary table for Gain_Loss_Open in each season
+season_summary_Gain_Loss_Open <- subset(official_table) %>% 
+  group_by(Gain_Loss_Open, Season)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_season_summary_Gain_Loss_Open <- 
+  ggplot(season_summary_Gain_Loss_Open,
+         aes(x=Season,y=Mean_volume,color=Season,shape = Gain_Loss_Open)) 
+
+#add scatter plot with labels
+plt_season_summary_Gain_Loss_Open + geom_point() + 
+  labs(x="Season", y="Mean_volume", title ="Season_G/L_Open",
+       color="Season", shape ="Gain_Loss_Open")
+
+##create summary table for Gain_Loss_Close in each season
+season_summary_Gain_Loss_Close <- subset(official_table) %>% 
+  group_by(Gain_Loss_Close, Season)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_season_summary_Gain_Loss_Close <- 
+  ggplot(season_summary_Gain_Loss_Close,
+         aes(x=Season,y=Mean_volume,color=Season,shape = Gain_Loss_Close)) 
+
+#add scatter plot with labels
+plt_season_summary_Gain_Loss_Close + geom_point() + 
+  labs(x="Season", y="Mean_volume", title ="Season_G/L_Close",
+       color="Season", shape ="Gain_Loss_Close")
+
+
+##create summary table for Gain_Loss_High in each season
+season_summary_Gain_Loss_High <- subset(official_table) %>% 
+  group_by(Gain_Loss_High, Season)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_season_summary_Gain_Loss_High <- 
+  ggplot(season_summary_Gain_Loss_High,
+         aes(x=Season,y=Mean_volume,color=Season,shape = Gain_Loss_High)) 
+
+#add scatter plot with labels
+plt_season_summary_Gain_Loss_High + geom_point() + 
+  labs(x="Season", y="Mean_volume", title ="Season_G/L_High",
+       color="Season", shape ="Gain_Loss_High")
+
+##create summary table for Gain_Loss_Low in each season
+season_summary_Gain_Loss_Low <- subset(official_table) %>% 
+  group_by(Gain_Loss_Low, Season)  %>% 
+  summarize(Mean_volume=mean(Volume), .groups = 'keep') #
+
+#import dataset into ggplot2
+plt_season_summary_Gain_Loss_Low <- 
+  ggplot(season_summary_Gain_Loss_Low,
+         aes(x=Season,y=Mean_volume,color=Season,shape = Gain_Loss_Low)) 
+
+#add scatter plot with labels
+plt_season_summary_Gain_Loss_Low + geom_point() + 
+  labs(x="Season", y="Mean_volume", title ="Season_G/L_Low",
+       color="Season", shape ="Gain_Loss_Low")
+```
+
