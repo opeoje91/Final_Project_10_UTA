@@ -381,8 +381,7 @@ The following two images are the Confusion Matrix and the Importance Features wh
 
 
 ### R Analysis
-- file:///Users/Irei/Desktop/Desktop/Analysis_Projects/Final_Project_AAPL/Final_Project_10_UTA/SEGMENT%202/R-Analysis/Final-Ranalysis.nb.html
-
+- https://team10-aaplwebsite.herokuapp.com/Final-Ranalysis.nb.html
 
 ### Candlestick Analysis
 The apple share price was compared over a period of 5 years and it was obvious that there was a steady increase in price over a period of 5 years. 
